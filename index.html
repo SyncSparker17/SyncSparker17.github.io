@@ -14,8 +14,9 @@
       margin: 20px;
     }
     .input-box, .output-box {
-      width: 1000px;
-      height: 500px;
+      width: 100%;
+      max-width: 1000px;
+      height: 200px;
       margin-top: 10px;
     }
     textarea {
@@ -25,15 +26,25 @@
       padding: 10px;
       box-sizing: border-box;
     }
+    @media (min-width: 768px) {
+      .input-box, .output-box {
+        height: 300px;
+      }
+    }
+    @media (min-width: 1024px) {
+      .input-box, .output-box {
+        height: 500px;
+      }
+    }
   </style>
 </head>
 <body>
 <div>
-  <p>Enter Syriac Text Here</p>
+  <label for="inputText">Enter Syriac Text Here</label>
   <textarea id="inputText" class="input-box" oninput="convertText()"></textarea>
 </div>
 <div>
-  <p>Converted Hebrew Text</p>
+  <label for="outputText">Converted Hebrew Text</label>
   <textarea id="outputText" class="output-box" readonly></textarea>
 </div>
 
