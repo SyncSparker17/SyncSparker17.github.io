@@ -50,14 +50,21 @@
 
 <script>
   function convertText() {
-    const input = document.getElementById("inputText").value;
+    const inputText = document.getElementById('inputText').value;
     let output = "";
 
-    for (let i = 0; i < input.length; i++) {
-      let currentChar = input[i];
-      let nextChar = i + 1 < input.length ? input[i + 1] : ' ';
+    for (let i = 0; i < inputText.length; i++) {
+      const currentChar = inputText.charAt(i);
 
-      if (currentChar === 'ܐ') {
+      if (currentChar === ' ') {
+        output += " ";
+      } else if (currentChar === '.') {
+        output += ".";
+      } else if (currentChar === ',') {
+        output += ",";
+      } else if (currentChar === '-') {
+        output += "-";
+      } else if (currentChar === 'ܐ') {
         output += "א";
       } else if (currentChar === 'ܒ') {
         output += "ב";
@@ -78,21 +85,41 @@
       } else if (currentChar === 'ܝ') {
         output += "י";
       } else if (currentChar === 'ܟ') {
-        output += nextChar === ' ' ? "ך" : "כ";
+        if (i === inputText.length - 1 || inputText.charAt(i + 1) === ' ' || inputText.charAt(i + 1) === '.' || inputText.charAt(i+1) === ',') {
+          output += "ך";
+        } else {
+          output += "כ";
+        }
       } else if (currentChar === 'ܠ') {
         output += "ל";
       } else if (currentChar === 'ܡ') {
-        output += nextChar === ' ' ? "ם" : "מ";
+        if (i === inputText.length - 1 || inputText.charAt(i + 1) === ' ' || inputText.charAt(i + 1) === '.' || inputText.charAt(i+1) === ',') {
+          output += "ם";
+        } else {
+          output += "מ";
+        }
       } else if (currentChar === 'ܢ') {
-        output += nextChar === ' ' ? "ן" : "נ";
+        if (i === inputText.length - 1 || inputText.charAt(i + 1) === ' ' || inputText.charAt(i + 1) === '.' || inputText.charAt(i+1) === ',') {
+          output += "ן";
+        } else {
+          output += "נ";
+        }
       } else if (currentChar === 'ܣ') {
         output += "ס";
       } else if (currentChar === 'ܥ') {
         output += "ע";
       } else if (currentChar === 'ܦ') {
-        output += nextChar === ' ' ? "ף" : "פ";
+        if (i === inputText.length - 1 || inputText.charAt(i + 1) === ' '|| inputText.charAt(i + 1) === '.' || inputText.charAt(i+1) === ',') {
+          output += "ף";
+        } else {
+          output += "פ";
+        }
       } else if (currentChar === 'ܨ') {
-        output += nextChar === ' ' ? "ץ" : "צ";
+        if (i === inputText.length - 1 || inputText.charAt(i + 1) === ' '|| inputText.charAt(i + 1) === '.' || inputText.charAt(i+1) === ',') {
+          output += "ץ";
+        } else {
+          output += "צ";
+        }
       } else if (currentChar === 'ܩ') {
         output += "ק";
       } else if (currentChar === 'ܪ') {
@@ -101,14 +128,10 @@
         output += "ש";
       } else if (currentChar === 'ܬ') {
         output += "ת";
-      } else if (currentChar === ' ') {
-        output += " ";
-      } else {
-        output += currentChar;
       }
     }
 
-    document.getElementById("outputText").value = output;
+    document.getElementById('outputText').value = output;
   }
 </script>
 </body>
